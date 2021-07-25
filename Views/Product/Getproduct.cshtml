@@ -59,10 +59,11 @@
         </div>
     </div>
 </div>
-    <div id="list-view" class="tab-pane product-list-view fade" role="tabpanel">
-        <div class="row">
-            <div class="col">
-               @foreach (var item in Model) {
+<div id="list-view" class="tab-pane product-list-view fade" role="tabpanel">
+    <div class="row">
+        <div class="col">
+            @foreach (var item in Model)
+            {
                 <div class="row product-layout-list">
                     <div class="col-lg-3 col-md-5 ">
                         <div class="product-image">
@@ -116,29 +117,39 @@
                         </div>
                     </div>
                 </div>
-                }
-            </div>
-        </div>
-    </div>
-    <div class="paginatoin-area">
-        <div class="row">
-            <div class="col-lg-6 col-md-6">
-                <p>Showing 1-12 of 13 item(s)</p>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <ul class="pagination-box">
-                    <li>
-                        <a href="#" class="Previous"><i class="fa fa-chevron-left"></i> Previous</a>
-                    </li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li>
-                        <a href="#" class="Next"> Next <i class="fa fa-chevron-right"></i></a>
-                    </li>
-                </ul>
-            </div>
+            }
         </div>
     </div>
 </div>
+<div class="paginatoin-area">
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <p>Showing 1-12 of 13 item(s)</p>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <ul class="pagination-box">
+                <li>
+                    <a href="@Url.Action("Product_Index", "Product", new { pageid = Convert.ToInt32(Request.QueryString["pageid"]) - 1 , id = ViewBag.id, brandid = Request.QueryString["brandid"], oringinid = Request.QueryString["originid"], saleid = Request.QueryString["saleid"] })" class="Previous"><i class="fa fa-chevron-left"></i> Previous</a>
+                </li>
+
+                @for (int i = 1; i <= ViewBag.dem; i++)
+                {
+                    if (i == Convert.ToInt32(Request.QueryString["pageid"]))
+                    {
+                        <li class="active"><a href="@Url.Action("Product_Index", "Product", new { pageid = i, id = ViewBag.id, brandid = Request.QueryString["brandid"], oringinid = Request.QueryString["originid"], saleid = Request.QueryString["saleid"] })">@i</a></li>
+
+                    }
+                    else 
+                    {
+                        <li><a href="@Url.Action("Product_Index", "Product", new { pageid = i, id = ViewBag.id, brandid = Request.QueryString["brandid"], oringinid = Request.QueryString["originid"], saleid = Request.QueryString["saleid"] })">@i</a></li>
+
+                    }
+
+                }
+                <li>
+                    <a href="@Url.Action("Product_Index", "Product", new { pageid = Convert.ToInt32(Request.QueryString["pageid"]) + 1 , id = ViewBag.id, brandid = Request.QueryString["brandid"], oringinid = Request.QueryString["originid"], saleid = Request.QueryString["saleid"] })" class="Next"> Next <i class="fa fa-chevron-right"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>

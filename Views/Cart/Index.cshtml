@@ -37,7 +37,7 @@ else
                                     {
                                       <form action="@Url.Action("SuaSoLuong")" method="post">
                                         <tr>
-                                            <td class="li-product-remove"><a href="@Url.Action("XoaKhoiGio", "Cart", new { SanPhamID = item.SanPhamID })" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?')"><i class="fa fa-times"></i></a></td>
+                                            <td class="li-product-remove"><a style="color: #000000; font-size: 25px " href="@Url.Action("XoaKhoiGio", "Cart", new { SanPhamID = item.SanPhamID })" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?')"><ion-icon name="trash-outline"></ion-icon></a></td>
                                             <td class="li-product-thumbnail"><a href="#"><img width="150" src="~/@item.Hinh" alt="Li's Product Image"></a></td>
                                             <td class="li-product-name"><a style="color: #2a2626" href="#">@item.TenSanPham</a></td>
                                             <td class="li-product-price"><span class="amount">@String.Format("{0:#,##0.##}", item.DonGia) đ</span></td>

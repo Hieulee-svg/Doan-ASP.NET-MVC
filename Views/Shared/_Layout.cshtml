@@ -40,10 +40,14 @@
     <link rel="stylesheet" href="~/Content/css/responsive.css">
     <!-- Modernizr js -->
     <script src="~/Content/js/vendor/modernizr-2.8.3.min.js"></script>
-   
+
     @Scripts.Render("~/bundles/modernizr")
+
 </head>
+
 <body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v11.0" nonce="ryXVps77"></script>
     @using Microsoft.AspNet.Identity
     <!-- Begin Body Wrapper -->
     <div class="body-wrapper">
@@ -67,35 +71,35 @@
                             <div class="header-top-right">
                                 <ul class="ht-menu">
                                     <!-- Begin Setting Area -->
-                                   
-                                <li>
-                                    @if (Request.IsAuthenticated)
-                                    {
-                                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+
+                                    <li>
+                                        @if (Request.IsAuthenticated)
                                         {
-                                            @Html.AntiForgeryToken()
-                                            <div class="ht-setting-trigger"><span><b style="padding-right: 8px;">Hello!</b>   @User.Identity.GetUserName()</span></div>
+                                            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <div class="ht-setting-trigger"><span><b style="padding-right: 8px;">Hello!</b>   @User.Identity.GetUserName()</span></div>
+                                                <div class="setting ht-setting">
+                                                    <ul class="ht-setting-list">
+
+                                                        <li><a href="@Url.Action("Checkout","Checkout")">Thanh toán</a></li>
+                                                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Đăng xuất</a></li>
+                                                    </ul>
+                                                </div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="ht-setting-trigger"><span><ion-icon name="person-circle-outline"></ion-icon> Tài khoản</span></div>
                                             <div class="setting ht-setting">
                                                 <ul class="ht-setting-list">
-
-                                                    <li><a href="@Url.Action("Checkout","Checkout")">Thanh toán</a></li>
-                                                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Đăng xuất</a></li>
+                                                    <li>@Html.ActionLink("Đăng kí", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                                                    <li>@Html.ActionLink("Đăng nhập", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
                                                 </ul>
                                             </div>
+
                                         }
-                                    }
-                                    else
-                                    {
-                                        <div class="ht-setting-trigger"><span>Tài khoản</span></div>
-                                        <div class="setting ht-setting">
-                                            <ul class="ht-setting-list">
-                                                <li>@Html.ActionLink("Đăng kí", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-                                                <li>@Html.ActionLink("Đăng nhập", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-                                            </ul>
-                                        </div>
-                                       
-                                    }
-                                </li>
+                                    </li>
                                     <!-- Setting Area End Here -->
                                     <!-- Begin Currency Area -->
                                     <li>
@@ -194,19 +198,20 @@
                                 <nav>
                                     <ul>
                                         <li class="dropdown-holder">
-                                            <a href="@Url.Action("Index", "Home")">Home</a>
+
+                                            <a href="@Url.Action("Index", "Home")"><span style="font-size: 20px; margin-top: 2px; padding-right: 6px"><ion-icon name="home-outline"></ion-icon></span> Home</a>
 
                                         </li>
                                         <li class="megamenu-holder">
-                                            <a href="@Url.Action("Product_Index", "Product", new {id = 0 , brandid = 0, originid = 0, saleid = 0})">Product</a>
+                                            <a href="@Url.Action("Product_Index", "Product", new {id = 0 , brandid = 0, originid = 0, saleid = 0})"><span style="font-size: 20px; margin-top: 2px; padding-right: 6px"><ion-icon name="beer-outline"></ion-icon></span> Product</a>
                                         </li>
-                                      
-                                        
-                                        <li><a href="about-us.html">About Us</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
+
+
+                                        <li><a href="about-us.html"><span style="font-size: 20px; margin-top: 2px; padding-right: 6px"><ion-icon name="body-outline"></ion-icon></span> About Us</a></li>
+                                        <li><a href="contact.html"><span style="font-size: 20px; margin-top: 2px; padding-right: 6px"><ion-icon name="call-outline"></ion-icon></span> Contact</a></li>
                                         <!-- Begin Header Bottom Menu Information Area -->
                                         <li class="hb-info f-right p-0 d-sm-none d-lg-block">
-                                            <span>22A, Đường số 19, Hiệp Bình Chánh, Thủ Đức</span>
+                                            <span style="padding-right: 4px"><ion-icon name="navigate-outline"></ion-icon></span><span>22A, Đường số 19, Hiệp Bình Chánh, Thủ Đức</span>
                                         </li>
                                         <!-- Header Bottom Menu Information Area End Here -->
                                     </ul>
@@ -306,7 +311,7 @@
                             <div class="col-lg-4 col-md-6">
                                 <div class="footer-logo">
                                     <img src="images/menu/logo/1.jpg" alt="Footer Logo">
-                                   
+
                                 </div>
                                 <ul class="des">
                                     <li>
@@ -413,7 +418,6 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <!-- Begin Footer Links Area -->
-                          
                             <!-- Footer Links Area End Here -->
                             <!-- Begin Footer Payment Area -->
                             <div class="copyright text-center">
@@ -423,7 +427,6 @@
                             </div>
                             <!-- Footer Payment Area End Here -->
                             <!-- Begin Copyright Area -->
-                        
                             <!-- Copyright Area End Here -->
                         </div>
                     </div>
@@ -483,7 +486,8 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
 </html>

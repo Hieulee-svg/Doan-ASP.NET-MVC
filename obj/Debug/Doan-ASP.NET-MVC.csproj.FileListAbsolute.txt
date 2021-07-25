@@ -111,4 +111,9 @@ C:\Users\Hieu\OneDrive\Desktop\Doan-ASP.NET-MVC\bin\System.Web.Http.WebHost.dll
 C:\Users\Hieu\OneDrive\Desktop\Doan-ASP.NET-MVC\bin\System.Net.Http.Formatting.xml
 C:\Users\Hieu\OneDrive\Desktop\Doan-ASP.NET-MVC\bin\System.Web.Http.xml
 C:\Users\Hieu\OneDrive\Desktop\Doan-ASP.NET-MVC\bin\System.Web.Http.WebHost.xml
-C:\Users\Hieu\OneDrive\Desktop\Doan-ASP.NET-MVC\obj\Debug\Doan-ASP.NET-MVC.csproj.AssemblyReference.cache
+C:\Users\Hieu\OneDrive\Desktop\Doan-ASP.NET-MVC\bin\PagedList.dll
+C:\Users\Hieu\OneDrive\Desktop\Doan-ASP.NET-MVC\bin\PagedList.Mvc.dll
+C:\Users\Hieu\OneDrive\Desktop\Doan-ASP.NET-MVC\bin\PagedList.xml
+C:\Users\Hieu\OneDrive\Desktop\Doan-ASP.NET-MVC\bin\PagedList.Mvc.xml
+C:\Users\Hieu\OneDrive\Desktop\Doan-ASP.NET-MVC\bin\PayPal.dll
+C:\Users\Hieu\OneDrive\Desktop\Doan-ASP.NET-MVC\bin\PayPal.xml

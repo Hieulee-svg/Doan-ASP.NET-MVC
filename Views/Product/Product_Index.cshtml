@@ -112,16 +112,20 @@
                                     <div class="row">
                                         @foreach (var item in Model)
                                         {
-                                       
-                                        
-                                                {
-                                                    Html.RenderAction("Getproduct", "Product", new { id = item.category_id , brandid = item.brandid, oringinid = item.originid, saleid = item.saleid });
-                                                }
-                                       
-                                       
+
+
+                                            {
+                                                Html.RenderAction("Getproduct", "Product", new { id = item.category_id, brandid = item.brandid, oringinid = item.originid, saleid = item.saleid, page = ViewBag.page });
+                                            }
+
+
                                         }
-                    <!-- shop-products-wrapper end -->
-                </div>
+
+                                       
+                                    </div>
+                                </div>
+                                <!-- shop-products-wrapper end -->
+                            </div>
             </div>
         </div>
     </div>

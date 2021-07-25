@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList.Mvc;
+using PagedList;
 
 namespace Doan_ASP.NET_MVC.Controllers
 {
@@ -11,48 +13,48 @@ namespace Doan_ASP.NET_MVC.Controllers
     {
         private ShopModelContext db = new ShopModelContext();
         // GET: Product
-        public ActionResult Product_Index(int? id, int? brandid, int? originid, int? saleid)
+        public ActionResult Product_Index(int? id, int? brandid, int? originid, int? saleid, int? pageid)
         {
-
+            IQueryable<Category> categories = null;
             if (id == 0 && brandid == 0 && originid==0 && saleid ==0)
             {
-                var categories = from c in db.Categories
+                categories = from c in db.Categories
                                  where c.category_id == 1
                                  select c;
-                return View(categories);
+                
             }
             else if (id != 0 && brandid == 0 && originid == 0 && saleid== 0 )
             {
-                var categories = from c in db.Categories
+                categories = from c in db.Categories
                                  where c.category_id == id
                                  select c;
-                return View(categories);
+               
             }
             else if (id != null && brandid != null)
             {
-                var categories = from c in db.Categories
+                 categories = from c in db.Categories
                                  where c.category_id == id
                                  select c;
                 foreach (Category c in categories)
                 {
                     c.brandid = (int)brandid;
                 }
-                return View(categories);
+                
             }
             else if (id != null && originid != null)
             {
-                var categories = from c in db.Categories
+                categories = from c in db.Categories
                                  where c.category_id == id
                                  select c;
                 foreach (Category c in categories)
                 {
                     c.originid = (int)originid;
                 }
-                return View(categories);
+               
             }
             else if (id != 0 && saleid != 0 && originid == null && brandid == null)
             {
-                var categories = from c in db.Categories
+                 categories = from c in db.Categories
                                  where c.category_id == id
                                  select c;
                 foreach (Category c in categories)
@@ -61,10 +63,10 @@ namespace Doan_ASP.NET_MVC.Controllers
                     c.brandid = 0;
                     c.originid = 0;
                 }
-                return View(categories);
+               
             }
-
-            return View();
+            ViewBag.page = pageid;
+            return View(categories);
 
         }
 
@@ -112,53 +114,64 @@ namespace Doan_ASP.NET_MVC.Controllers
         }
 
 
-        public ActionResult Getproduct(int? id, int? brandid, int? originid, int? saleid)
+        public ActionResult Getproduct(int? id, int? brandid, int? originid, int? saleid, int? page)
         {
+            IQueryable<Product> list = null;
+            if (page == null || page < 1) page = 1;
+            int pageSize = 9;
+
+            
             if (id == 0 && brandid == 0 && originid == 0 && saleid == 0)
             {
-                IQueryable<Product> list = from p in db.Products
-                                           orderby p.product_id
-                                           select p;
+                 list = from p in db.Products
+                        orderby p.product_id
+                        select p;
               
-                return PartialView("Getproduct", list);
-
             }
             else if (id != 0 && saleid != 0)
             {
-                IQueryable<Product> list = from p in db.Products
-                                           where p.category_id == id && p.sale_id == saleid
-                                           select p;
-               
-                return PartialView("Getproduct", list);
+                 list = from p in db.Products
+                        where p.category_id == id && p.sale_id == saleid
+                        orderby p.product_id
+                        select p;
+                      
             }
-            else if (id != 0 && brandid == 0 && originid == 0 && saleid == 0)
+            else if (id != 0 && brandid == 0 && originid == null || originid == 0 && saleid == 0)
             {
-                IQueryable<Product> list = from p in db.Products
-                                           where p.category_id == id
-                                           orderby p.product_id
-                                           select p;
-             
-                return PartialView("Getproduct", list);
+                 list = from p in db.Products
+                        where p.category_id == id
+                        orderby p.product_id
+                        select p;
             }
             else if (id != 0 && brandid != 0 && originid == null   )
             {
-                IQueryable<Product> list = from p in db.Products
-                                           where p.category_id == id && p.brand_id == brandid
-                                           select p;
-               
-                return PartialView("Getproduct", list);
+                list = from p in db.Products
+                       where p.category_id == id && p.brand_id == brandid
+                       orderby p.product_id
+                       select p;
+                    
             }else if(id != 0 && originid != 0 && brandid == 0) 
             { 
-                IQueryable<Product> list = from p in db.Products
-                                           where p.category_id == id && p.origin_id == originid
-                                           select p;
+                 list = from p in db.Products
+                        where p.category_id == id && p.origin_id == originid
+                        orderby p.origin_id
+                        select p;
                
-                return PartialView("Getproduct", list);
+                
             }
-      
+            int v = list.Count();
+            if (v % pageSize == 0)
+            {
+                ViewBag.dem = v / pageSize;
+            }
+            else
+            {
+                ViewBag.dem = v / pageSize + 1;
+            }
+            if (page > ViewBag.dem) page = ViewBag.dem;
+            ViewBag.id = id;
+            return PartialView("Getproduct", list.ToPagedList((int)page, pageSize));
 
-            return null;
-          
         }
 
         public ActionResult Product_Detail(int id)
