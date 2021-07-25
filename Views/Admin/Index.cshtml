@@ -12,7 +12,7 @@
                 <div class="card">
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <a class="btn btn-success" style="margin-bottom:10px" href="/Products/Create"><i class="fa fa-plus"></i></a>
+                        <a class="btn btn-success" style="margin-bottom:10px" href="/Admin/Create"><i class="fa fa-plus"></i></a>
                         <table id="example1" class="table table-bordered table-striped" method="Get">
                             <thead>
                                 <tr>
@@ -85,8 +85,8 @@
                                     <td>@Html.DisplayFor(modelItem => item.sale.sale_name)</td>
                                     <td>@Html.DisplayFor(modelItem => item.productsale)</td>
                                     <td>
-                                        <a class='btn btn-default btn-sm' style='margin-left:5px' href="/Products/Details/@item.product_id"><i class='fa fa-edit'></i>Sửa</a>
-                                        <a class='btn btn-danger btn-sm' style='margin-left:5px' href="/Products/Delete/@item.product_id"><i class='fa fa-trash'></i>Xóa</a>
+                                        <a class='btn btn-default btn-sm' style='margin-left:5px' href="/Admin/Details/@item.product_id"><i class='fa fa-edit'></i>Sửa</a>
+                                        <a class='btn btn-danger btn-sm' style='margin-left:5px' href="/Admin/Delete/@item.product_id"><i class='fa fa-trash'></i>Xóa</a>
                                     </td>
 
                                 </tr>

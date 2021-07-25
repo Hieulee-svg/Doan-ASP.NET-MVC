@@ -188,6 +188,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AboutusController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BillDetailsController.cs" />
     <Compile Include="Controllers\BillsController.cs" />
@@ -195,12 +196,13 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Image_detailController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OriginsController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\salesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2451,6 +2453,7 @@
     <Content Include="Content\images\product\Product-Detail\9.3.png" />
     <Content Include="Content\images\product\Product-Detail\9.4.jpg" />
     <Content Include="Content\images\product\Product-Detail\9.jpg" />
+    <Content Include="Content\images\product\small-size\113.jpg" />
     <Content Include="Content\images\product\small-size\m1.jpg" />
     <Content Include="Content\images\product\small-size\10.jpg" />
     <Content Include="Content\images\product\small-size\11.jpg" />
@@ -3390,17 +3393,19 @@
     <Content Include="Views\Origins\Delete.cshtml" />
     <Content Include="Views\Origins\Edit.cshtml" />
     <Content Include="Views\Origins\Index.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Delete.cshtml" />
-    <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
-    <Content Include="Views\Products\GetProductById.cshtml" />
-    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\GetProductById.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\sales\Create.cshtml" />
     <Content Include="Views\sales\Delete.cshtml" />
     <Content Include="Views\sales\Edit.cshtml" />
     <Content Include="Views\sales\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Aboutus\Aboutus.cshtml" />
+    <Content Include="Views\Contact\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

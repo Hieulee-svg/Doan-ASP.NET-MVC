@@ -11,11 +11,12 @@ using Doan_ASP.NET_MVC.Models;
 
 namespace Doan_ASP.NET_MVC.Controllers
 {
-    public class ProductsController : Controller
+    public class AdminController : Controller
     {
         private ShopModelContext db = new ShopModelContext();
 
         // GET: Products
+        [Authorize(Roles = "admin")]
         public ActionResult Index()
         {
             var products = db.Products.Include(p => p.Brand).Include(p => p.Category).Include(p => p.Origin).Include(p => p.sale);
